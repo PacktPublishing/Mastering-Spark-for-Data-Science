@@ -1,0 +1,66 @@
+@(indexForm: Form[Library])(songs: Songs)(implicit flash: Flash)
+
+@displaySections(songs: Songs) = {
+    @for(node <- songs.songs.sorted) {
+        <a href="#" class="list-group-item">
+            <i class="glyphicon glyphicon-play"></i>
+            @node
+        </a>
+    }
+}
+
+@main("Audio Indexing") {
+
+    @helper.form(action = routes.Index.submit) {
+
+        <div class="row">
+            <h1 class="cover-heading">Audio Indexing</h1>
+            <p class="lead">
+                Start a Spark job to index a Library stored on HDFS.
+                <br>
+                The library should be a directory made of .wav files.
+                <br>
+                <b>@songs.songs.size songs are currently indexed</b>
+            </p>
+            <div class="input-group col-xs-12">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-cloud"></i></span>
+                <input type="text" class="form-control input-lg" name="path" placeholder="">
+                <span class="input-group-btn">
+                    <button class="index btn btn-warning input-lg" type="submit"><i class="glyphicon glyphicon-qrcode"></i> Re-Index</button>
+                </span>
+            </div>
+        </div>
+        <p>
+
+        </p>
+        <div class="row">
+            <div class="input-group col-xs-12">
+                @flash.get("success").map { message =>
+                    <div class="alert alert-success">
+                        <strong>@message</strong>
+                    </div>
+                }
+                @flash.get("warning").map { message =>
+                    <div class="alert alert-warning">
+                        <strong>@message</strong>
+                    </div>
+                }
+                @flash.get("error").map { message =>
+                    <div class="alert alert-danger">
+                        <strong>@message</strong>
+                    </div>
+                }
+            </div>
+        </div>
+        <p>
+
+        </p>
+        <div class="row">
+            <div class="list-group">
+            @displaySections(songs)
+            </div>
+        </div>
+    }
+
+
+}

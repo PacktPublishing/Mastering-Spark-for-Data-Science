@@ -1,0 +1,49 @@
+@(message: String)(songs: Songs)(implicit flash: Flash)
+@main("Song Analyzer") {
+
+    @helper.form(action = routes.Analyze.submit(), 'enctype -> "multipart/form-data") {
+
+        <div class="row">
+            <h1 class="cover-heading">Song analyzer</h1>
+            <p class="lead">
+                Analyzes audio file by transforming time domain into time frequency hash values.
+                <br>
+                <b>@songs.songs.size songs are currently indexed</b>
+            </p>
+            <input type="file" name="song" class="file">
+            <div class="input-group col-xs-12">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-cloud"></i></span>
+                <input type="text" class="form-control input-lg" placeholder="Upload Song">
+                <span class="input-group-btn">
+                    <button class="browse btn btn-primary input-lg" type="button"><i class="glyphicon glyphicon-search"></i> Upload</button>
+                    <button class="btn btn-success input-lg" type="submit"><i class="glyphicon glyphicon-transfer"></i> Analyze</button>
+                </span>
+            </div>
+        </div>
+        <p>
+
+        </p>
+        <div class="row">
+            <div class="input-group col-xs-12">
+                @flash.get("success").map { message =>
+                    <div class="alert alert-success">
+                        <strong>@message</strong>
+                    </div>
+                }
+                @flash.get("warning").map { message =>
+                    <div class="alert alert-warning">
+                        <strong>@message</strong>
+                    </div>
+                }
+                @flash.get("error").map { message =>
+                    <div class="alert alert-danger">
+                        <strong>@message</strong>
+                    </div>
+                }
+            </div>
+        </div>
+
+    }
+
+
+}

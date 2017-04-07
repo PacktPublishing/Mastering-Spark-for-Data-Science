@@ -1,0 +1,17 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /                            controllers.Analyze.index
+GET     /analyze                     controllers.Analyze.index
+POST    /analyze                     controllers.Analyze.submit
+GET     /index                       controllers.Index.index
+POST    /index                       controllers.Index.submit
+GET     /playlist                    controllers.Playlist.index
+POST    /playlist                    controllers.Playlist.submit
+GET     /playlist/:id                controllers.Playlist.personalize(id: Long)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+    

@@ -1,0 +1,23 @@
+import io.gzet.GeoLookup
+val adminCodesPath = "/Users/antoine/Workspace/gzet/data/geonames/admin1CodesASCII.txt"
+val allCountriesPath = "/Users/antoine/Workspace/gzet/data/geonames/allCountries.txt"
+val geonames = GeoLookup.load(sc, adminCodesPath, allCountriesPath)
+val rdd = sc.textFile("/Users/antoine/Workspace/gzet/web-scraper/src/test/resources/places")
+val cleanRdd = rdd.map(GeoLookup.clean)
+import breeze.util.BloomFilter
+val bloomFilterSize = cleanRdd.count
+val bloomFilter: BloomFilter[String] = cleanRdd mapPartitions { it =>
+      val bf = BloomFilter.optimallySized[String](bloomFilterSize, 0.001)
+      it foreach { name =>
+        bf += GeoLookup.clean(name)
+      }
+      Iterator(bf)
+    } reduce(_ | _)
+
+val filteredGeonames = geonames filter { case (name, geoname) =>
+      bloomFilter.contains(name)
+    }
+
+filteredGeonames.cache
+filteredGeonames.count
+filteredGeonames.repartition(1).saveAsObjectFile("/Users/antoine/Workspace/gzet/web-scraper/src/test/resources/geonames")

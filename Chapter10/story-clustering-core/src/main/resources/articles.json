@@ -1,0 +1,66 @@
+{
+  "mappings": {
+    "news": {
+      "properties": {
+        "uid": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "cid": {
+          "type": "integer"
+        },
+        "gid": {
+          "type": "integer"
+        },
+        "batch": {
+          "type": "integer"
+        },
+        "hash": {
+          "type": "integer"
+        },
+        "date": {
+          "type": "date",
+          "format": "epoch_millis"
+        },
+        "url": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "title": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "tone": {
+          "type": "double"
+        },
+        "geo": {
+          "type": "geo_point",
+          "geohash_prefix": true,
+          "geohash_precision": "1km"
+        },
+        "country": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "theme": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "person": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "organization": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "vector": {
+          "type": "string",
+          "index": "no"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.file {
+    visibility: hidden;
+    position: absolute;
+}
+
+body {
+    padding-top: 0;
+}
+
+.jumbotron {
+    background-color: transparent;
+    padding-top: 0;
+}
+
+.navbar {
+    margin-bottom: 0;
+}

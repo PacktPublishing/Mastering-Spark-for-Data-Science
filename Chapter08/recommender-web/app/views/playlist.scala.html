@@ -1,0 +1,67 @@
+@(playlist: Playlist)(implicit flash: Flash)
+
+@displaySections(playlist: Playlist) = {
+    @for(node <- playlist.nodes.sortBy(_.popularity).reverse) {
+        <a href="/playlist/@node.id" class="list-group-item">
+            <i class="glyphicon glyphicon-play"></i>
+            <span class="badge">
+            @node.popularity
+            </span>
+            @node.name
+        </a>
+    }
+}
+
+@main("Playlist") {
+
+    @helper.form(action = routes.Playlist.submit) {
+
+    <div class="row">
+        <h1 class="cover-heading">Playlist recommender</h1>
+        @if(playlist.id.isDefined){ <h2>@playlist.id.get</h2> }
+        <p class="lead">
+            We run a @if(playlist.id.isDefined){ personalized } page rank algorithm on frequency graph cooccurrence
+            <br>
+            We rank playlist by chord frequency popularity with a 10% chance of @if(playlist.id.isEmpty){ random } teleport
+            <br>
+            <b>@playlist.nodes.size songs are currently ranked</b>
+        </p>
+        <div class="input-group col-xs-12">
+            <span class="input-group-btn">
+                <button class="index btn btn-warning input-lg" type="submit"><i class="glyphicon glyphicon-qrcode"></i> Re-Analyze</button>
+            </span>
+        </div>
+    </div>
+    <p>
+
+    </p>
+    <div class="row">
+        <div class="input-group col-xs-12">
+            @flash.get("success").map { message =>
+                <div class="alert alert-success">
+                    <strong>@message</strong>
+                </div>
+            }
+            @flash.get("warning").map { message =>
+                <div class="alert alert-warning">
+                    <strong>@message</strong>
+                </div>
+            }
+            @flash.get("error").map { message =>
+                <div class="alert alert-danger">
+                    <strong>@message</strong>
+                </div>
+            }
+        </div>
+    </div>
+    <p>
+
+    </p>
+    <div class="row">
+        <div class="list-group">
+        @displaySections(playlist)
+        </div>
+    </div>
+
+    }
+}

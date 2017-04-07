@@ -1,0 +1,8 @@
+/recommender-web/logs
+target
+*.iml
+.idea
+RUNNING_PID
+/recommender-core/dependency-reduced-pom.xml
+
+

@@ -1,0 +1,1 @@
+GET        /simhash        io.gzet.story.web.controllers.SimHash.fetch

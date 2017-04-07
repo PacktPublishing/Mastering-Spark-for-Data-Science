@@ -1,0 +1,184 @@
+@namespace("org.io.gzet.gdelt.gkg")
+protocol Gkg21
+{
+
+// ------------------------------------------------------------------------------- > v1 Objects
+
+            @namespace("org.io.gzet.gdelt.gkg.v1")
+            record Location
+            {
+            	int locationType = 0;
+            	union { null , string } fullName = null;
+            	union { null , string } countryCode = null;
+            	union { null , string } aDM1Code = null;
+            	float locationLatitude = 0.0;
+            	float locationLongitude = 0.0;
+            	union { null , string } featureId = null;
+            }
+
+            @namespace("org.io.gzet.gdelt.gkg.v1")
+            record Count
+            {
+            	union { null , string } countType = null;
+            	int count = 0;
+            	union { null , string } objectType = null;
+                union { null , org.io.gzet.gdelt.gkg.v1.Location } v1Location = null;
+            }
+
+            @namespace("org.io.gzet.gdelt.gkg.v1")
+            record Stone
+            {
+                float tone = 0.0;
+                float positiveScore = 0.0;
+                float negativeScore = 0.0;
+                float polarity = 0.0;
+                float activityReferenceDensity = 0.0;
+                float selfGroupReferenceDensity = 0.0;
+                int wordCount = 0;
+            }
+
+// ------------------------------------------------------------------------------- < v1 Objects
+
+// ------------------------------------------------------------------------------- > v2 Objects
+
+			@namespace("org.io.gzet.gdelt.gkg.v2")
+            enum SourceCollectionIdentifier
+            {
+                WEB,
+                CITATIONONLY,
+                CORE,
+                DTIC,
+                JSTOR,
+                NONTEXTUALSOURCE
+            }
+
+            @namespace("org.io.gzet.gdelt.gkg.v2")
+            record EnhancedLocation
+            {
+                org.io.gzet.gdelt.gkg.v1.Location v1Location;
+                union { null , string } aDM2Code = null;
+                int charOffset = 0;
+            }
+
+            @namespace("org.io.gzet.gdelt.gkg.v2")
+            record EnhancedTheme
+            {
+                union { null , string } theme = null;
+                int offset = 0;
+            }
+
+            @namespace("org.io.gzet.gdelt.gkg.v2")
+            record EnhancedPerson
+            {
+                union { null , string } person = null;
+                int charOffset = 0;
+            }
+
+            @namespace("org.io.gzet.gdelt.gkg.v2")
+            record EnhancedOrganisation
+            {
+                union { null , string } organisation = null;
+                int charOffset = 0;
+            }
+
+            @namespace("org.io.gzet.gdelt.gkg.v2")
+            record Gcam
+            {
+                union { null , string } DictionaryDimensionID = null;
+                float score = 0.0;
+            }
+
+// ------------------------------------------------------------------------------- < v2 Objects
+
+// ------------------------------------------------------------------------------- > v2.1 Objects
+
+            @namespace("org.io.gzet.gdelt.gkg.v21")
+			record GkgRecordId
+			{
+			    long date = 0;
+			    boolean translingual = false;
+			    int numberInBatch = 0;
+			}
+
+            @namespace("org.io.gzet.gdelt.gkg.v21")
+            record EnhancedDate
+            {
+                int dateResolution = 0;
+                int month = 0;
+                int day = 0;
+                int year = 0;
+                int charOffset = 0;
+            }
+
+            @namespace("org.io.gzet.gdelt.gkg.v21")
+            record Count
+            {
+                union { null , org.io.gzet.gdelt.gkg.v1.Count } v1Count = null;
+                int charOffset = 0;
+            }
+
+            @namespace("org.io.gzet.gdelt.gkg.v21")
+            record Quotation
+            {
+                int offset = 0;
+                int charLength = 0;
+                union { null , string } verb = null;
+                union { null , string } quote = null;
+            }
+
+            @namespace("org.io.gzet.gdelt.gkg.v21")
+            record Name
+            {
+                union { null , string } name = null;
+                int charOffset = 0;
+            }
+
+            @namespace("org.io.gzet.gdelt.gkg.v21")
+            record Amount
+            {
+                long amount = 0;
+                union { null , string } object = null;
+                int offset = 0;
+            }
+
+            @namespace("org.io.gzet.gdelt.gkg.v21")
+            record TranslationInfo
+            {
+                union { null , string } SRCLC = null;
+                union { null , string } ENG = null;
+            }
+
+// ------------------------------------------------------------------------------- < v2.1 Objects
+
+			@namespace("org.io.gzet.gdelt.gkg.v21")
+			record Specification
+			{
+				GkgRecordId gkgRecordId;
+				union { null , long } v21Date = null;
+				union { null , org.io.gzet.gdelt.gkg.v2.SourceCollectionIdentifier } v2SourceCollectionIdentifier = null;
+				union { null , string } v21SourceCommonName = null;
+				union { null , string } v2DocumentIdentifier = null;
+				union { null , array<org.io.gzet.gdelt.gkg.v1.Count> } v1Counts = null;
+				union { null , array<org.io.gzet.gdelt.gkg.v21.Count> } v21Counts = null;
+				union { null , array<string> } v1Themes = null;
+				union { null , array<org.io.gzet.gdelt.gkg.v2.EnhancedTheme> } v2EnhancedThemes = null;
+				union { null , array<org.io.gzet.gdelt.gkg.v1.Location> } v1Locations = null;
+				union { null , array<org.io.gzet.gdelt.gkg.v2.EnhancedLocation> } v2EnhancedLocations = null;
+				union { null , array<string> } v1Persons = null;
+				union { null , array<org.io.gzet.gdelt.gkg.v2.EnhancedPerson> } v2EnhancedPersons = null;
+				union { null , array<string> } v1Organisations = null;
+				union { null , array<org.io.gzet.gdelt.gkg.v2.EnhancedOrganisation> } v2EnhancedOrganisations = null;
+				union { null , org.io.gzet.gdelt.gkg.v1.Stone } v1Stone = null;
+				union { null , array<org.io.gzet.gdelt.gkg.v21.EnhancedDate> } v21EnhancedDates = null;
+				union { null , array<org.io.gzet.gdelt.gkg.v2.Gcam> } v2Gcam = null;
+				union { null , string } v21SharingImage = null;
+				union { null , array<string> } v21RelatedImages = null;
+				union { null , array<string> } v21SocialImageEmbeds = null;
+				union { null , array<string> } v21SocialVideoEmbeds = null;
+				union { null , array<org.io.gzet.gdelt.gkg.v21.Quotation> } v21Quotations = null;
+				union { null , array<org.io.gzet.gdelt.gkg.v21.Name> } v21AllNames = null;
+				union { null , array<org.io.gzet.gdelt.gkg.v21.Amount> } v21Amounts = null;
+				union { null , org.io.gzet.gdelt.gkg.v21.TranslationInfo } v21TranslationInfo = null;
+				union { null , string } v2ExtrasXML = null;
+            }
+}
