@@ -1,0 +1,2 @@
+This product includes software developed by gzet.io and by The Apache Software
+Foundation (http://www.apache.org/).

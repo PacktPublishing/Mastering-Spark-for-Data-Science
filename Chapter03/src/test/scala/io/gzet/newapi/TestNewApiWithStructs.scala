@@ -14,50 +14,64 @@
 
 package io.gzet.newapi
 
-import io.gzet.oldapi.createAvro
+import java.io.File
+
 import io.gzet.test.SparkFunSuite
 import com.databricks.spark.avro._
+import org.apache.commons.io.FileUtils
 import org.apache.spark.sql.Row
-import org.apache.spark.sql.types.ArrayType
-import org.io.gzet.gdelt.gkg.v1.Location
 
 class TestNewApiWithStructs extends SparkFunSuite {
 
-  localTest("Create and write Avro using spark-avro lib") { spark =>
-    val gdeltRDD = spark.sparkContext.textFile("/Users/uktpmhallett/Downloads/20160101020000.gkg.csv")
+  val inputFilePath = getClass.getResource("/20160101020000.gkg.csv")
+  val avroStructPath = "target/20160101020000.gkg.struct.avro"
 
-    def createV1Count(str: String): Array[String]  = {
-      Array("a", "b", "c")
+  localTest("Create and write Avro using spark-avro lib and Structs") { spark =>
+    val gdeltRDD = spark.sparkContext.textFile(inputFilePath.toString)
 
-    }
-
-    val gdeltRowRDD = gdeltRDD.map(_.split("\t"))
+    val gdeltRowRDD = gdeltRDD.map(_.split("\t", -1))
       .map(attributes => Row(
-        createAvroWithStructs.createGkgRecordID(attributes(0)),
+        CreateAvroWithStructs.createGkgRecordID(attributes(0)),
         attributes(1).toLong,
         attributes(2),
         attributes(3),
         attributes(4),
-        createV1Count(attributes(5))
+        CreateAvroWithStructs.createV1Counts(attributes(5)),
+        CreateAvroWithStructs.createV21Counts(attributes(6)),
+        CreateAvroWithStructs.createV1Themes(attributes(7)),
+        CreateAvroWithStructs.createV2EnhancedThemes(attributes(8)),
+        CreateAvroWithStructs.createV1Locations(attributes(9)),
+        CreateAvroWithStructs.createV2Locations(attributes(10)),
+        CreateAvroWithStructs.createV1Persons(attributes(11)),
+        CreateAvroWithStructs.createV2Persons(attributes(12)),
+        CreateAvroWithStructs.createV1Orgs(attributes(13)),
+        CreateAvroWithStructs.createV2Orgs(attributes(14)),
+        CreateAvroWithStructs.createV1Stone(attributes(15)),
+        CreateAvroWithStructs.createV21Dates(attributes(16)),
+        CreateAvroWithStructs.createV2GCAM(attributes(17)),
+        attributes(18),
+        CreateAvroWithStructs.createV21RelImgAndVid(attributes(19)),
+        CreateAvroWithStructs.createV21RelImgAndVid(attributes(20)),
+        CreateAvroWithStructs.createV21RelImgAndVid(attributes(21)),
+        CreateAvroWithStructs.createV21Quotations(attributes(22)),
+        CreateAvroWithStructs.createV21AllNames(attributes(23)),
+        CreateAvroWithStructs.createV21Amounts(attributes(24)),
+        CreateAvroWithStructs.createV21TransInfo(attributes(25)),
+        attributes(26)
       ))
 
-//          attributes(3),
-//          attributes(4),
-//          createV1CountArray(attributes(5)),
-//            createV21CountArray(attributes(6))
-//
-//      ))
+    FileUtils.deleteDirectory(new File(avroStructPath))
 
-    val gdeltDF = spark.createDataFrame(gdeltRowRDD, createAvroWithStructs.GkgSchema)
-    // write to file in Avro format
-    gdeltDF.write.avro("/Users/uktpmhallett/Downloads/avrotest")
+    val gdeltDF = spark.createDataFrame(gdeltRowRDD, CreateAvroWithStructs.GkgSchema)
+    gdeltDF.write.avro(avroStructPath)
+
+    assertResult(4) (new File(avroStructPath).listFiles.length)
 
   }
 
-//  localTest("Read Avro using spark-avro") { spark =>
-//    val gdeltAvroDF = spark.read.format("com.databricks.spark.avro").load("/Users/uktpmhallett/Downloads/avrotest")
-//    gdeltAvroDF.show(20)
-//  }
-
-
+  localTest("Read Avro into Dataframe using spark-avro") { spark =>
+    val gdeltAvroDF = spark.read.format("com.databricks.spark.avro").load(avroStructPath)
+    assertResult(10) (gdeltAvroDF.count)
+    gdeltAvroDF.show
+  }
 }
