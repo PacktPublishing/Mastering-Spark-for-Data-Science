@@ -1,0 +1,256 @@
+NUL,000,0x00,00000000,Null char
+SOH,001,0x01,00000001,Start of Heading
+STX,002,0x02,00000010,Start of Text
+ETX,003,0x03,00000011,End of Text
+EOT,004,0x04,00000100,End of Transmission
+ENQ,005,0x05,00000101,Enquiry
+ACK,006,0x06,00000110,Acknowledgment
+BEL,007,0x07,00000111,Bell
+BS,008,0x08,00001000,Back Space
+HT,009,0x09,00001001,Horizontal Tab
+LF,010,0x0A,00001010,Line Feed
+VT,011,0x0B,00001011,Vertical Tab
+FF,012,0x0C,00001100,Form Feed
+CR,013,0x0D,00001101,Carriage Return
+SO,014,0x0E,00001110,Shift Out / X-On
+SI,015,0x0F,00001111,Shift In / X-Off
+DLE,016,0x10,00010000,Data Line Escape
+DC1,017,0x11,00010001,Device Control 1 (oft. XON)
+DC2,018,0x12,00010010,Device Control 2
+DC3,019,0x13,00010011,Device Control 3 (oft. XOFF)
+DC4,020,0x14,00010100,Device Control 4
+NAK,021,0x15,00010101,Negative Acknowledgement
+SYN,022,0x16,00010110,Synchronous Idle
+ETB,023,0x17,00010111,End of Transmit Block
+CAN,024,0x18,00011000,Cancel
+EM,025,0x19,00011001,End of Medium
+SUB,026,0x1A,00011010,Substitute
+ESC,027,0x1B,00011011,Escape
+FS,028,0x1C,00011100,File Separator
+GS,029,0x1D,00011101,Group Separator
+RS,030,0x1E,00011110,Record Separator
+US,031,0x1F,00011111,Unit Separator
+ ,032,0x20,00100000,Space
+!,033,0x21,00100001,Exclamation mark
+\,034,0x22,00100010,Double quotes (or speech marks)
+#,035,0x23,00100011,Hash
+$,036,0x24,00100100,Dollar
+%,037,0x25,00100101,Procenttecken
+&,038,0x26,00100110,Ampersand
+',039,0x27,00100111,Single quote
+(,040,0x28,00101000,Open parenthesis (or open bracket)
+),041,0x29,00101001,Close parenthesis (or close bracket)
+*,042,0x2A,00101010,Asterisk
++,043,0x2B,00101011,Plus
+",",044,0x2C,00101100,Comma
+-,045,0x2D,00101101,Hyphen
+.,046,0x2E,00101110,Period dot or full stop
+/,047,0x2F,00101111,Slash or divide
+0,048,0x30,00110000,Zero
+1,049,0x31,00110001,One
+2,050,0x32,00110010,Two
+3,051,0x33,00110011,Three
+4,052,0x34,00110100,Four
+5,053,0x35,00110101,Five
+6,054,0x36,00110110,Six
+7,055,0x37,00110111,Seven
+8,056,0x38,00111000,Eight
+9,057,0x39,00111001,Nine
+:,058,0x3A,00111010,Colon
+;,059,0x3B,00111011,Semicolon
+<,060,0x3C,00111100,Less than (or open angled bracket)
+=,061,0x3D,00111101,Equals
+>,062,0x3E,00111110,Greater than (or close angled bracket)
+?,063,0x3F,00111111,Question mark
+@,064,0x40,01000000,At symbol
+A,065,0x41,01000001,Uppercase A
+B,066,0x42,01000010,Uppercase B
+C,067,0x43,01000011,Uppercase C
+D,068,0x44,01000100,Uppercase D
+E,069,0x45,01000101,Uppercase E
+F,070,0x46,01000110,Uppercase F
+G,071,0x47,01000111,Uppercase G
+H,072,0x48,01001000,Uppercase H
+I,073,0x49,01001001,Uppercase I
+J,074,0x4A,01001010,Uppercase J
+K,075,0x4B,01001011,Uppercase K
+L,076,0x4C,01001100,Uppercase L
+M,077,0x4D,01001101,Uppercase M
+N,078,0x4E,01001110,Uppercase N
+O,079,0x4F,01001111,Uppercase O
+P,080,0x50,01010000,Uppercase P
+Q,081,0x51,01010001,Uppercase Q
+R,082,0x52,01010010,Uppercase R
+S,083,0x53,01010011,Uppercase S
+T,084,0x54,01010100,Uppercase T
+U,085,0x55,01010101,Uppercase U
+V,086,0x56,01010110,Uppercase V
+W,087,0x57,01010111,Uppercase W
+X,088,0x58,01011000,Uppercase X
+Y,089,0x59,01011001,Uppercase Y
+Z,090,0x5A,01011010,Uppercase Z
+[,091,0x5B,01011011,Opening bracket
+\\,092,0x5C,01011100,Backslash
+],093,0x5D,01011101,Closing bracket
+^,094,0x5E,01011110,Caret - circumflex
+_,095,0x5F,01011111,Underscore
+`,096,0x60,01100000,Grave accent
+a,097,0x61,01100001,Lowercase a
+b,098,0x62,01100010,Lowercase b
+c,099,0x63,01100011,Lowercase c
+d,100,0x64,01100100,Lowercase d
+e,101,0x65,01100101,Lowercase e
+f,102,0x66,01100110,Lowercase f
+g,103,0x67,01100111,Lowercase g
+h,104,0x68,01101000,Lowercase h
+i,105,0x69,01101001,Lowercase i
+j,106,0x6A,01101010,Lowercase j
+k,107,0x6B,01101011,Lowercase k
+l,108,0x6C,01101100,Lowercase l
+m,109,0x6D,01101101,Lowercase m
+n,110,0x6E,01101110,Lowercase n
+o,111,0x6F,01101111,Lowercase o
+p,112,0x70,01110000,Lowercase p
+q,113,0x71,01110001,Lowercase q
+r,114,0x72,01110010,Lowercase r
+s,115,0x73,01110011,Lowercase s
+t,116,0x74,01110100,Lowercase t
+u,117,0x75,01110101,Lowercase u
+v,118,0x76,01110110,Lowercase v
+w,119,0x77,01110111,Lowercase w
+x,120,0x78,01111000,Lowercase x
+y,121,0x79,01111001,Lowercase y
+z,122,0x7A,01111010,Lowercase z
+{,123,0x7B,01111011,Opening brace
+|,124,0x7C,01111100,Vertical bar
+},125,0x7D,01111101,Closing brace
+~,126,0x7E,01111110,Equivalency sign - tilde
+,127,0x7F,01111111,Delete
+€,128,0x80,10000000,Euro sign
+,129,0x81,10000001,
+,130,0x82,10000010,Single low-9 quotation mark
+ƒ,131,0x83,10000011,Latin small letter f with hook
+„,132,0x84,10000100,Double low-9 quotation mark
+…,133,0x85,10000101,Horizontal ellipsis
+†,134,0x86,10000110,Dagger
+‡,135,0x87,10000111,Double dagger
+ˆ,136,0x88,10001000,Modifier letter circumflex accent
+‰,137,0x89,10001001,Per mille sign
+Š,138,0x8A,10001010,Latin capital letter S with caron
+‹,139,0x8B,10001011,Single left-pointing angle quotation
+Œ,140,0x8C,10001100,Latin capital ligature OE
+,141,0x8D,10001101,
+Ž,142,0x8E,10001110,Latin captial letter Z with caron
+,143,0x8F,10001111,
+,144,0x90,10010000,
+‘,145,0x91,10010001,Left single quotation mark
+’,146,0x92,10010010,Right single quotation mark
+“,147,0x93,10010011,Left double quotation mark
+”,148,0x94,10010100,Right double quotation mark
+•,149,0x95,10010101,Bullet
+–,150,0x96,10010110,En dash
+—,151,0x97,10010111,Em dash
+˜,152,0x98,10011000,Small tilde
+™,153,0x99,10011001,Trade mark sign
+š,154,0x9A,10011010,Latin small letter S with caron
+›,155,0x9B,10011011,Single right-pointing angle quotation mark
+œ,156,0x9C,10011100,Latin small ligature oe
+,157,0x9D,10011101,
+ž,158,0x9E,10011110,Latin small letter z with caron
+Ÿ,159,0x9F,10011111,Latin capital letter Y with diaeresis
+ ,160,0xA0,10100000,Non-breaking space
+¡,161,0xA1,10100001,Inverted exclamation mark
+¢,162,0xA2,10100010,Cent sign
+£,163,0xA3,10100011,Pound sign
+¤,164,0xA4,10100100,Currency sign
+¥,165,0xA5,10100101,Yen sign
+¦,166,0xA6,10100110,Pipe Broken vertical bar
+§,167,0xA7,10100111,Section sign
+¨,168,0xA8,10101000,Spacing diaeresis - umlaut
+©,169,0xA9,10101001,Copyright sign
+ª,170,0xAA,10101010,Feminine ordinal indicator
+«,171,0xAB,10101011,Left double angle quotes
+¬,172,0xAC,10101100,Not sign
+­,173,0xAD,10101101,Soft hyphen
+®,174,0xAE,10101110,Registered trade mark sign
+¯,175,0xAF,10101111,Spacing macron - overline
+°,176,0xB0,10110000,Degree sign
+±,177,0xB1,10110001,Plus-or-minus sign
+²,178,0xB2,10110010,Superscript two - squared
+³,179,0xB3,10110011,Superscript three - cubed
+´,180,0xB4,10110100,Acute accent - spacing acute
+µ,181,0xB5,10110101,Micro sign
+¶,182,0xB6,10110110,Pilcrow sign - paragraph sign
+·,183,0xB7,10110111,Middle dot - Georgian comma
+¸,184,0xB8,10111000,Spacing cedilla
+¹,185,0xB9,10111001,Superscript one
+º,186,0xBA,10111010,Masculine ordinal indicator
+»,187,0xBB,10111011,Right double angle quotes
+¼,188,0xBC,10111100,Fraction one quarter
+½,189,0xBD,10111101,Fraction one half
+¾,190,0xBE,10111110,Fraction three quarters
+¿,191,0xBF,10111111,Inverted question mark
+À,192,0xC0,11000000,Latin capital letter A with grave
+Á,193,0xC1,11000001,Latin capital letter A with acute
+Â,194,0xC2,11000010,Latin capital letter A with circumflex
+Ã,195,0xC3,11000011,Latin capital letter A with tilde
+Ä,196,0xC4,11000100,Latin capital letter A with diaeresis
+Å,197,0xC5,11000101,Latin capital letter A with ring above
+Æ,198,0xC6,11000110,Latin capital letter AE
+Ç,199,0xC7,11000111,Latin capital letter C with cedilla
+È,200,0xC8,11001000,Latin capital letter E with grave
+É,201,0xC9,11001001,Latin capital letter E with acute
+Ê,202,0xCA,11001010,Latin capital letter E with circumflex
+Ë,203,0xCB,11001011,Latin capital letter E with diaeresis
+Ì,204,0xCC,11001100,Latin capital letter I with grave
+Í,205,0xCD,11001101,Latin capital letter I with acute
+Î,206,0xCE,11001110,Latin capital letter I with circumflex
+Ï,207,0xCF,11001111,Latin capital letter I with diaeresis
+Ð,208,0xD0,11010000,Latin capital letter ETH
+Ñ,209,0xD1,11010001,Latin capital letter N with tilde
+Ò,210,0xD2,11010010,Latin capital letter O with grave
+Ó,211,0xD3,11010011,Latin capital letter O with acute
+Ô,212,0xD4,11010100,Latin capital letter O with circumflex
+Õ,213,0xD5,11010101,Latin capital letter O with tilde
+Ö,214,0xD6,11010110,Latin capital letter O with diaeresis
+×,215,0xD7,11010111,Multiplication sign
+Ø,216,0xD8,11011000,Latin capital letter O with slash
+Ù,217,0xD9,11011001,Latin capital letter U with grave
+Ú,218,0xDA,11011010,Latin capital letter U with acute
+Û,219,0xDB,11011011,Latin capital letter U with circumflex
+Ü,220,0xDC,11011100,Latin capital letter U with diaeresis
+Ý,221,0xDD,11011101,Latin capital letter Y with acute
+Þ,222,0xDE,11011110,Latin capital letter THORN
+ß,223,0xDF,11011111,Latin small letter sharp s - ess-zed
+à,224,0xE0,11100000,Latin small letter a with grave
+á,225,0xE1,11100001,Latin small letter a with acute
+â,226,0xE2,11100010,Latin small letter a with circumflex
+ã,227,0xE3,11100011,Latin small letter a with tilde
+ä,228,0xE4,11100100,Latin small letter a with diaeresis
+å,229,0xE5,11100101,Latin small letter a with ring above
+æ,230,0xE6,11100110,Latin small letter ae
+ç,231,0xE7,11100111,Latin small letter c with cedilla
+è,232,0xE8,11101000,Latin small letter e with grave
+é,233,0xE9,11101001,Latin small letter e with acute
+ê,234,0xEA,11101010,Latin small letter e with circumflex
+ë,235,0xEB,11101011,Latin small letter e with diaeresis
+ì,236,0xEC,11101100,Latin small letter i with grave
+í,237,0xED,11101101,Latin small letter i with acute
+î,238,0xEE,11101110,Latin small letter i with circumflex
+ï,239,0xEF,11101111,Latin small letter i with diaeresis
+ð,240,0xF0,11110000,Latin small letter eth
+ñ,241,0xF1,11110001,Latin small letter n with tilde
+ò,242,0xF2,11110010,Latin small letter o with grave
+ó,243,0xF3,11110011,Latin small letter o with acute
+ô,244,0xF4,11110100,Latin small letter o with circumflex
+õ,245,0xF5,11110101,Latin small letter o with tilde
+ö,246,0xF6,11110110,Latin small letter o with diaeresis
+÷,247,0xF7,11110111,Division sign
+ø,248,0xF8,11111000,Latin small letter o with slash
+ù,249,0xF9,11111001,Latin small letter u with grave
+ú,250,0xFA,11111010,Latin small letter u with acute
+û,251,0xFB,11111011,Latin small letter u with circumflex
+ü,252,0xFC,11111100,Latin small letter u with diaeresis
+ý,253,0xFD,11111101,Latin small letter y with acute
+þ,254,0xFE,11111110,Latin small letter thorn
+ÿ,255,0xFF,11111111,Latin small letter y with diaeresis
