@@ -13,7 +13,7 @@ import org.apache.spark.sql.expressions.Window
 
 object mainClass {
 
-  val inputfile = "brent-oil-prices.csv"	// /Users/uktpmhallett/Downloads/OIL/brent-oil-prices.csv
+  val inputfile = "brent-oil-prices.csv"
 
   def main(args: Array[String]): Unit = {
     val spark = SparkSession
@@ -70,7 +70,6 @@ object mainClass {
       }
     }
 
-    //(10.0 compare 0).signum
     val simpleTrendDF = highLowPrevDF.withColumn("sign", simpleTrendFunc(highLowPrevDF("highLow.HighestHighPrice"),
       highLowPrevDF("highLow.LowestLowPrice"),
       highLowPrevDF("highLowPrev.HighestHighPrice"),
@@ -130,10 +129,6 @@ object mainClass {
 //      .option("codec", "org.apache.hadoop.io.compress.GzipCodec")
       .save("/Users/uktpmhallett/Documents/fhls");
 
-    // find 0s, insert rows
-    // use simpleTrendDF
-
-
     // code for stackable
     val newColumnNames = Seq("DATE", "PRICE")
 
@@ -147,9 +142,5 @@ object mainClass {
       .format("com.databricks.spark.csv")
       .option("header", "true")
       .save("stackData.csv");
-
-//    val withoutCurrency = spark.createDataFrame(highLowDF.rdd.map(x => {
-//      RowFactory.create(x.getAs("window")., x.getAs("highLow"))
-//    }), highLowDF.schema)
   }
 }
