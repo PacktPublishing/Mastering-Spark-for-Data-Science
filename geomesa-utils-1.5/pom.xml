@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <parent>
-        <artifactId>gzet-parent</artifactId>
-        <groupId>io.gzet</groupId>
-        <version>1.0</version>
-    </parent>
+    <!-- Use specific versions of dependencies - no parent required
+    <parent>-->
+        <!--<artifactId>gzet-parent</artifactId>-->
+        <!--<groupId>io.gzet</groupId>-->
+        <!--<version>1.0</version>-->
+    <!--</parent>-->
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -13,24 +14,33 @@
     <artifactId>chapter05-geographic</artifactId>
     <version>1.0</version>
 
+    <!-- A custom build of Geomesa 1.2.6 with these versions of Spark and Scala is required at time of writing -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <geomesa.version>1.2.6</geomesa.version>
+        <spark.version>1.5.0</spark.version>
+        <scala.version>2.11.7</scala.version>
+        <hadoop.version>2.6.0</hadoop.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
             <version>${scala.version}</version>
-            <scope>provided</scope>
+            <!--<scope>provided</scope>-->
         </dependency>
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-reflect</artifactId>
             <version>${scala.version}</version>
-            <scope>provided</scope>
+            <!--<scope>provided</scope>-->
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_2.11</artifactId>
             <version>${spark.version}</version>
-            <scope>provided</scope>
+            <!--<scope>provided</scope>-->
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
@@ -49,6 +59,16 @@
             <artifactId>hadoop-client</artifactId>
             <version>${hadoop.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.locationtech.geomesa</groupId>
+            <artifactId>geomesa-accumulo-datastore</artifactId>
+            <version>${geomesa.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.locationtech.geomesa</groupId>
+            <artifactId>geomesa-compute</artifactId>
+            <version>${geomesa.version}</version>
         </dependency>
     </dependencies>
 
