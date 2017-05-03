@@ -2,11 +2,10 @@ package io.gzet.geomesa
 
 import java.text.SimpleDateFormat
 
-import org.apache.spark
 import org.apache.spark.ml.Pipeline
 import org.apache.spark.ml.classification.NaiveBayes
 import org.apache.spark.ml.feature.{HashingTF, IDF, Tokenizer}
-import org.apache.spark.sql.Row
+import org.apache.spark.sql.{SparkSession, Row}
 import org.apache.spark.sql.types.{StringType, StructField, StructType}
 
 import scala.collection.mutable.WrappedArray
@@ -29,14 +28,20 @@ object PredictOilPrice {
   def main(args: Array[String]) {
     // ------------- the data science part
 
+    val spark = SparkSession
+      .builder()
+      .appName("PredictOilPrice")
+      .enableHiveSupport()
+      .getOrCreate()
+
     // use this to load saved data
-    val gdeltAttrRDDListString = sc.objectFile[List[String]](sourcefile)
+    val gdeltAttrRDDListString = spark.sparkContext.objectFile[List[String]](sourcefile)
     val gdeltAttrRDD = gdeltAttrRDDListString.map(a => Row(a(0), a(1), a(2), a(3), a(4)))
 
     // create a Map to hold the CAMEO codes and their references
     var cameoMap = scala.collection.mutable.Map[String, String]()
 
-    val linesRDD = sc.textFile(cameofile)
+    val linesRDD = spark.sparkContext.textFile(cameofile)
     linesRDD.collect.foreach(line => {
       val splitsArr = line.split("\t")
       cameoMap += (splitsArr(0) -> splitsArr(1).
@@ -81,7 +86,7 @@ object PredictOilPrice {
       withColumn("commonFriday", dateConvertUDF(sentencesDF("window.end")))
 
     // create the oilPriceChangeDF
-    OilPriceFunc.createOilPriceDF(inputfile, outputfile)
+    OilPriceFunc.createOilPriceDF(inputfile, outputfile, spark)
     val oilPriceChangeDF = spark.
       read.
       option("inferSchema", "true").

@@ -3,7 +3,7 @@ package io.gzet.geomesa
 import java.text.SimpleDateFormat
 import java.util.Calendar
 
-import org.apache.spark
+import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.expressions.Window
 
 object OilPriceFunc {
@@ -20,7 +20,7 @@ object OilPriceFunc {
     }
 
     // create and save oil price changes
-    def createOilPriceDF(inputfile: String, outputfile: String) = {
+    def createOilPriceDF(inputfile: String, outputfile: String, spark: SparkSession) = {
 
       val oilPriceDF = spark.
         read.
