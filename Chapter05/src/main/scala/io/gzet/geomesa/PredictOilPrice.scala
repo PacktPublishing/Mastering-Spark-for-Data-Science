@@ -7,6 +7,7 @@ import org.apache.spark.ml.classification.NaiveBayes
 import org.apache.spark.ml.feature.{HashingTF, IDF, Tokenizer}
 import org.apache.spark.sql.{SparkSession, Row}
 import org.apache.spark.sql.types.{StringType, StructField, StructType}
+import org.apache.spark.sql.functions.{udf, window, collect_list, monotonically_increasing_id}
 
 import scala.collection.mutable.WrappedArray
 
@@ -31,7 +32,7 @@ object PredictOilPrice {
     val spark = SparkSession
       .builder()
       .appName("PredictOilPrice")
-      .enableHiveSupport()
+      .config("spark.master", "local")
       .getOrCreate()
 
     // use this to load saved data
@@ -97,7 +98,7 @@ object PredictOilPrice {
       drop("window").
       drop("sentenceArray").
       join(oilPriceChangeDF, Seq("commonFriday")).
-      withColumn("id", monotonicallyIncreasingId)
+      withColumn("id", monotonically_increasing_id)
 
     // create the stages
     val tokenizer = new Tokenizer().

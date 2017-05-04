@@ -5,6 +5,7 @@ import java.util.Calendar
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.expressions.Window
+import org.apache.spark.sql.functions.{udf, window, last, col, lag}
 
 object OilPriceFunc {
 
