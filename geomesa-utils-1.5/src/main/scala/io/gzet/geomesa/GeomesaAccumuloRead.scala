@@ -16,6 +16,7 @@ import scala.collection.JavaConversions._
 object GeomesaAccumuloRead {
 
   // written for current version of Geomesa - Spark1.5
+  // spark-1.5.0/bin/spark-submit --class io.gzet.geomesa.GeomesaAccumuloRead geomesa-utils-15-1.0.jar
 
   // specify the params for the datastore
   val params = Map(
@@ -39,6 +40,7 @@ object GeomesaAccumuloRead {
 
   val filter = s"bbox($geom, $bbox) AND $date during $during"
 
+  // writes to HDFS - prepend with file:/// for local filesystem
   val outputFile = "gdeltAttrRDD2016"
 
   def main(args: Array[String]) {

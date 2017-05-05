@@ -11,7 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.gzet</groupId>
-    <artifactId>chapter05-geographic</artifactId>
+    <artifactId>geomesa-utils-15</artifactId>
     <version>1.0</version>
 
     <!-- A custom build of Geomesa 1.2.6 with these versions of Spark and Scala is required at time of writing -->

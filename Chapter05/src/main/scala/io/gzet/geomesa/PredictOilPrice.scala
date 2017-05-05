@@ -13,6 +13,12 @@ import scala.collection.mutable.WrappedArray
 
 object PredictOilPrice {
 
+  // use this if the window function misbehaves due to timezone e.g. BST
+  // ./spark-shell --driver-java-options "-Duser.timezone=UTC"
+  // ./spark-submit --conf 'spark.driver.extraJavaOptions=-Duser.timezone=UTC'
+
+  // spark-2.0.0/bin/spark-submit --class io.gzet.geomesa.PredictOilPrice --conf 'spark.driver.extraJavaOptions=-Duser.timezone=UTC' chapter05-geographic-1.0.jar
+
   // the oil prices input data
   val inputfile = "Brent-oil-prices-2016.csv"
 
@@ -65,7 +71,7 @@ object PredictOilPrice {
     ))
 
     val gdeltSentenceDF = spark.createDataFrame(bagOfWordsRDD, gdeltSentenceStruct)
-    gdeltSentenceDF.show(10, false)
+//    gdeltSentenceDF.show(10, false)
 
     // group dates into 7 day blocks and merge the sentences - runs friday to thursday
 
@@ -90,8 +96,10 @@ object PredictOilPrice {
     OilPriceFunc.createOilPriceDF(inputfile, outputfile, spark)
     val oilPriceChangeDF = spark.
       read.
+      format("com.databricks.spark.csv").
       option("inferSchema", "true").
-      csv(outputfile)
+      option("header", "true").
+      load(outputfile)
 
     // merge this DF to the oilProceChangeDF
     val changeJoinDF = aggSentenceDF.

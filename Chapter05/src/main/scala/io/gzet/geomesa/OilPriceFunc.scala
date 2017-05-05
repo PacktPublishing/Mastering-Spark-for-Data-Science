@@ -11,6 +11,7 @@ object OilPriceFunc {
 
     // use this if the window function misbehaves due to timezone e.g. BST
     // ./spark-shell --driver-java-options "-Duser.timezone=UTC"
+    // ./spark-submit --conf 'spark.driver.extraJavaOptions=-Duser.timezone=UTC'
 
     // define a function to reformat the date field
     def convert(date:String) : String = {
@@ -72,7 +73,7 @@ object OilPriceFunc {
       oilPriceChangeDF.select("label", "commonFriday").
         write.
         format("com.databricks.spark.csv").
-        //.option("header", "true")
+        option("header", "true").
         //.option("codec", "org.apache.hadoop.io.compress.GzipCodec")
         save(outputfile)
     }
