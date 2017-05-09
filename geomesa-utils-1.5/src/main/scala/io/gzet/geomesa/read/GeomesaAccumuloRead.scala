@@ -1,4 +1,4 @@
-package io.gzet.geomesa
+package io.gzet.geomesa.read
 
 import java.text.SimpleDateFormat
 
