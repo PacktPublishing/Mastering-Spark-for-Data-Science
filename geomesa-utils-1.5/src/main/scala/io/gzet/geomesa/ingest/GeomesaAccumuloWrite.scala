@@ -23,13 +23,8 @@ import scala.collection.JavaConversions._
 
 object GeomesaAccumuloWrite {
 
-  var LATITUDE_COL_IDX = 39
-  var LONGITUDE_COL_IDX = 40
-  var DATE_COL_IDX = 1
-  var ID_COL_IDX = 0
-  var MINIMUM_NUM_FIELDS = 41
-  var featureBuilder: SimpleFeatureBuilder = null
-  var geometryFactory: GeometryFactory = JTSFactoryFinder.getGeometryFactory
+  // written for current version of Geomesa - Spark1.5
+  // spark-1.5.0/bin/spark-submit --class io.gzet.geomesa.ingest.GeomesaAccumuloWrite geomesa-utils-15-1.0.jar
 
   val dsConf = Map(
     "instanceId" -> "accumulo",
@@ -37,6 +32,14 @@ object GeomesaAccumuloWrite {
     "user" -> "root",
     "password" -> "accumulo",
     "tableName" -> "gdelt")
+
+  var LATITUDE_COL_IDX = 39
+  var LONGITUDE_COL_IDX = 40
+  var DATE_COL_IDX = 1
+  var ID_COL_IDX = 0
+  var MINIMUM_NUM_FIELDS = 41
+  var featureBuilder: SimpleFeatureBuilder = null
+  var geometryFactory: GeometryFactory = JTSFactoryFinder.getGeometryFactory
 
   val featureName = "event"
   val ingestFile = "file:///gdeltEventsTestFile.csv"
