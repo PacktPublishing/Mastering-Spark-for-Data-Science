@@ -1,9 +1,8 @@
-package io.gzet.geomesa.read
+package io.gzet.geomesa.ingest
 
 import java.text.SimpleDateFormat
 
 import org.apache.hadoop.conf.Configuration
-
 import org.apache.spark.{SparkConf, SparkContext}
 import org.geotools.data.{DataStoreFinder, Query}
 import org.geotools.factory.CommonFactoryFinder

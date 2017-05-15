@@ -6,6 +6,8 @@ This repository contains tools for interacting with Geomesa, which has been conf
 **com.example.geomesa.gdelt** - A Java Map Reduce job to write gdelt data to Geomesa Accumulo.
 Original code found here: http://www.geomesa.org/documentation/tutorials/geomesa-examples-gdelt.html
 
-**io.gzet.geomesa.read** - GeomesaAccumuloRead - A Spark job to read Geomesa Accumulo data.
+**io.gzet.geomesa.ingest.GeomesaAccumuloWrite** - A Spark job to write Gdelt Events to Accumulo.
+**io.gzet.geomesa.ingest.GeomesaAccumuloRead** - A Spark job to read Geomesa Accumulo data.
+
 
 
